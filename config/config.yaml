@@ -1,1 +1,111 @@
+# =========================
+# Dataset Configuration
+# =========================
+dataset:
+  name: "chest_xray"
+  kaggle_dataset: "amanullahasraf/covid19-pneumonia-normal-chest-xray-pa-dataset"
+  download_path: "./data/raw/"
+  image_size: 224
 
+  # IMPORTANT: match your folder names (lowercase)
+  class_names: ["covid", "normal", "pneumonia"]
+
+  normalize_mean: [0.485, 0.456, 0.406]
+  normalize_std: [0.229, 0.224, 0.225]
+
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+
+
+# =========================
+# Task Configuration (CORE)
+# =========================
+tasks:
+  num_tasks: 2
+
+  task_definitions:
+    - name: "Task_1"
+      classes: ["normal", "pneumonia"]
+
+    - name: "Task_2"
+      classes: ["normal", "pneumonia", "covid"]
+
+  augmentation: true
+  augmentation_strength: 0.3
+
+
+# =========================
+# Model Configuration
+# =========================
+model:
+  backbone: "resnet18"
+  pretrained: true
+  embedding_dim: 512
+  num_classes: 3   # max classes across tasks
+  dropout_rate: 0.3
+  mc_dropout_samples: 20
+
+
+# =========================
+# Training Configuration
+# =========================
+training:
+  batch_size: 32
+  epochs_per_task: 15
+  learning_rate: 0.001
+  optimizer: "adam"
+  weight_decay: 1e-5
+
+
+# =========================
+# EWC Configuration
+# =========================
+ewc:
+  use_ewc: true
+  task_aware: true
+  fisher_eps: 1e-4
+  lambda_cc: 1000.0
+  lambda_sr: 500.0
+  lambda_tp: 100.0
+
+
+# =========================
+# Drift Detection
+# =========================
+drift_detection:
+  method: "page_hinkley"
+  drift_threshold: 3.0
+  window_size: 50
+
+
+# =========================
+# Replay Buffer
+# =========================
+replay_buffer:
+  buffer_size: 500
+  use_replay: true
+  priority_weights:
+    uncertainty: 0.5
+    recency: 0.3
+    diversity: 0.2
+  embedding_only: true
+
+
+# =========================
+# Hardware
+# =========================
+hardware:
+  device: "auto"
+  num_workers: 4
+  seed: 42
+
+
+# =========================
+# Logging
+# =========================
+logging:
+  log_dir: "./logs/"
+  checkpoint_dir: "./results/models/"
+  metrics_dir: "./results/metrics/"
+  plot_dir: "./results/plots/"
