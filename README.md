@@ -9,7 +9,6 @@ This project addresses catastrophic forgetting in medical image classification t
 - **Task-Aware Elastic Weight Consolidation (TA-EWC)**: Protects clinically critical parameters while allowing task-specific adaptation
 - **Drift Detection**: Page-Hinkley test on embedding streams to trigger adaptive replay
 - **Privacy-Preserving Replay Buffer**: Stores only embeddings (not raw images) for HIPAA compliance
-- **MC Dropout Uncertainty**: Quantifies model confidence for intelligent buffer sampling
 
 ## Project Structure
 
@@ -33,18 +32,14 @@ catastrophic-forgetting-healthcare-ai/
 ├── train.py                           # Training loop
 ├── evaluate.py                        # Evaluation and visualization
 ├── notebooks/
-│   └── exploratory_analysis.ipynb     # Dataset exploration
-└── results/
-    ├── models/                        # Model checkpoints
-    ├── metrics/                       # CSV/JSON results
-    └── plots/                         # Visualizations
+   └── exploratory_analysis.ipynb     # Dataset exploration
+
 ```
 
 ## Installation
 
 ### Prerequisites
 - Python 3.9+
-- CUDA 11.8+ (optional, for GPU acceleration)
 - Kaggle API credentials
 
 ### Setup
@@ -244,18 +239,7 @@ D_i = Diversity Score
 - **No Patient ID Storage**: Clinical identifiers removed during preprocessing
 
 ## Evaluation Results
-
-Example results on Chest X-ray dataset:
-
-| Task | Val Acc | Test Acc | Forgetting |
-|------|---------|----------|------------|
-| Task 1 (Normal vs. Pneumonia) | 0.92 | 0.90 | 0.02 |
-| Task 2 (+ COVID) | 0.88 | 0.87 | 0.04 |
-| Task 3 (+ TB) | 0.85 | 0.84 | 0.06 |
-
-**Transfer Metrics**:
-- Average Forward Transfer: **+0.78** (high)
-- Average Backward Transfer: **-0.04** (low forgetting)
+<img width="1600" height="557" alt="image" src="https://github.com/user-attachments/assets/f46665ea-5345-4ef8-b5eb-c79c5d8d62f1" />
 
 ## Troubleshooting
 
