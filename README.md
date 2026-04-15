@@ -9,7 +9,6 @@ This project addresses catastrophic forgetting in medical image classification t
 - **Task-Aware Elastic Weight Consolidation (TA-EWC)**: Protects clinically critical parameters while allowing task-specific adaptation
 - **Drift Detection**: Page-Hinkley test on embedding streams to trigger adaptive replay
 - **Privacy-Preserving Replay Buffer**: Stores only embeddings (not raw images) for HIPAA compliance
-- **MC Dropout Uncertainty**: Quantifies model confidence for intelligent buffer sampling
 
 ## Project Structure
 
@@ -33,11 +32,8 @@ catastrophic-forgetting-healthcare-ai/
 ├── train.py                           # Training loop
 ├── evaluate.py                        # Evaluation and visualization
 ├── notebooks/
-│   └── exploratory_analysis.ipynb     # Dataset exploration
-└── results/
-    ├── models/                        # Model checkpoints
-    ├── metrics/                       # CSV/JSON results
-    └── plots/                         # Visualizations
+   └── exploratory_analysis.ipynb     # Dataset exploration
+
 ```
 
 ## Installation
