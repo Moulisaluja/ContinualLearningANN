@@ -269,10 +269,7 @@ kaggle datasets list
 ## References
 
 - **Elastic Weight Consolidation**: Kirkpatrick et al. (2017)
-- **Page-Hinkley Drift Detector**: Page & Hinkley (1961)
+- **Page-Hinkley Drift Detector**: Page & Hinkley (2020)
 - **MC Dropout**: Gal & Ghahramani (2016)
 
-## License
-
-MIT License - See LICENSE file for details
 
