@@ -265,18 +265,6 @@ kaggle datasets list
 - Increase `num_workers` in config
 - Use mixed precision (add `--amp` flag)
 
-## Citation
-
-If using this code, please cite:
-
-```bibtex
-@inproceedings{dear2024,
-  title={DEAR: Drift-Aware EWC with Adaptive Replay for Continual Learning in Healthcare},
-  author={Your Name},
-  booktitle={ML Hackathon 2024},
-  year={2024}
-}
-```
 
 ## References
 
